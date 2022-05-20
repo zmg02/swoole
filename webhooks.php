@@ -13,7 +13,7 @@ $content = json_decode($requestBody, true);
 // 判断主分支上是否有提交
 if ($content['ref'] == 'refs/heads/main') {
     // 项目存放的物理路径，也就是站点的访问地址
-    $path = '/www/wwwroot/swoole/';
+    $path = '/www/wwwroot/swoole/swoole/';
 
     // 执行脚本 git pull，拉取分支最新代码
     $res = shell_exec("cd {$path} && git pull origin main 2>&1"); //当前为www用户
