@@ -17,6 +17,7 @@ $serv->on('Receive', function($serv, $fd, $reactor_id, $data) {
 //处理异步任务(此回调函数在task进程中执行)
 $serv->on('Task', function ($serv, $task_id, $reactor_id, $data) {
     echo "New AsyncTask[id={$task_id}]".PHP_EOL;
+    sleep(5);
     //返回任务执行的结果
     $serv->finish("{$data} -> OK");
 });
