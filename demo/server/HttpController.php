@@ -14,6 +14,7 @@ class HttpController
         $this->http->set([
             'enable_static_handler' => true,
             'document_root' => '/www/wwwroot/swoole/swoole/public',
+            'task_worker_num' => 4, //设置异步任务的工作进程数量
         ]);
         $this->http->on('request', [$this, 'onRequest']);
         $this->http->on('receive', [$this, 'onReceive']);
