@@ -3,6 +3,11 @@
 //创建WebSocket Server对象，监听0.0.0.0:9502端口
 $ws = new Swoole\WebSocket\Server('0.0.0.0', 9502);
 
+$ws->set([
+    'enable_static_handler' => true,
+    'document_root' => '/www/wwwroot/swoole/swoole/public',
+]);
+
 //监听WebSocket连接打开事件
 $ws->on('Open', function ($ws, $request) {
     $ws->push($request->fd, "hello, welcome\n");
