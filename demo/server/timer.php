@@ -17,8 +17,8 @@ $ws->on('Open', function ($ws, $request) {
 $ws->on('Message', function ($ws, $frame) {
     echo "Message: {$frame->data}\n";
 
-    Swoole\Timer::after(5000, function($timerId) use ($ws, $frame) {
-        echo "5s-after: $timerId\n";
+    Swoole\Timer::after(5000, function() use ($ws, $frame) {
+        echo "5s-after\n";
         $ws->push($frame->fd, "server time after: ".date('Y-m-d H:i:s'));
     });
     $ws->push($frame->fd, "server: {$frame->data}");
