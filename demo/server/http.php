@@ -5,8 +5,7 @@
     $http->on('Request', function ($request, $response) {
         $response->header('Content-Type', 'text/html; charset=utf-8');
         $response->cookie('address', 'xiamen', 60*10);
-        $response->end('<h1>Hello Swoole. #' . rand(1000, 9999) . '</h1>');
-        $response->end('sss. #' . json_encode($request->get));
+        $response->end('sss. #' . json_encode($request->get) . rand(1000,9999));
     });
 
     $http->start();
