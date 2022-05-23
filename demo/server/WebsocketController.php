@@ -11,8 +11,8 @@ class WebsocketController
         $this->ws = new Swoole\WebSocket\server('0.0.0.0', '9502');
 
         $this->ws->set([
-            'enable_static_handler' => true,
-            'document_root' => '/www/wwwroot/swoole/swoole/public',
+            // 'enable_static_handler' => true,
+            // 'document_root' => '/www/wwwroot/swoole/swoole/public',
             'task_worker_num' => 4,
         ]);
 
