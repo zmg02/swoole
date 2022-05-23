@@ -20,7 +20,7 @@
         $controllerName = $controller.'Controller';
         $controllerPath = $controllerName.'.php';
         include_once $controllerPath;
-        (new $controller)->$action($request, $response);
+        (new $controllerName)->$action($request, $response);
     });
 
     $http->start();
