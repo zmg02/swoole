@@ -17,9 +17,9 @@
 
         list($controller, $action) = explode('/', trim($request->server['request_uri'], '/'));
         //根据 $controller, $action 映射到不同的控制器类和方法
-        $controller = $controller.'Controller.php';
-        include_once $controller;
-        var_dump($controller);
+        $controllerName = $controller.'Controller';
+        $controllerPath = $controllerName.'.php';
+        include_once $controllerPath;
         (new $controller)->$action($request, $response);
     });
 
