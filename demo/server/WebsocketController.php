@@ -8,7 +8,7 @@ class WebsocketController
 
     public function __construct()
     {
-        $this->ws = new Swoole\WebSocket\server(HOST, PORT);
+        $this->ws = new Swoole\WebSocket\server('0.0.0.0', '9502');
 
         $this->ws->set([
             'enable_static_handler' => true,
