@@ -28,12 +28,6 @@ class WebsocketController
      */
     public function onOpen($ws, $request)
     {
-        var_dump($request);
-        if ($request->server['path_info'] == '/favicon.ico' || $request->server['request_uri'] == '/favicon.ico') {
-            exit('favicon.ico');
-            $ws->end();
-            return;
-        }
         $ws->push($request->fd, 'hello,welcome222\n');
     }
 
