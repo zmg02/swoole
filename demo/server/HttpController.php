@@ -31,12 +31,7 @@ class HttpController
         }
         $response->header('Content-Type', 'text/html; charset=utf-8');
         $response->cookie('author', 'zmg', time()+60*60);
-        // todo 5s
-        $data = [
-            'task' => 1,
-            'data'   => 'zzz',
-        ];
-        $response->task($data);
+
         // list($controller, $action) = explode('/', trim($request->server['request_uri'], '/'));
         // //根据 $controller, $action 映射到不同的控制器类和方法
         // $controllerName = $controller.'Controller';
