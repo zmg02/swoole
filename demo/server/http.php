@@ -19,6 +19,7 @@
         //根据 $controller, $action 映射到不同的控制器类和方法
         $controller = $controller.'Controller.php';
         include_once $controller;
+        var_dump($controller);
         (new $controller)->$action($request, $response);
     });
 
