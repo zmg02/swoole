@@ -4,6 +4,6 @@ class TestController
 {
     public function index()
     {
-        echo 'TestController index action';
+        return 'TestController index action!';
     }
 }
