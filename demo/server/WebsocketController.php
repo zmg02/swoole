@@ -28,7 +28,7 @@ class WebsocketController
      */
     public function onOpen($ws, $request)
     {
-        $ws->push($request->fd, 'hello,welcome\n');
+        $ws->push($request->fd, 'hello,welcome222\n');
     }
 
     /**
