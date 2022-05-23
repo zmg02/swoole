@@ -1,17 +1,21 @@
 <?php
 
+//创建WebSocket Server对象，监听0.0.0.0:9502端口
 $ws = new Swoole\WebSocket\Server('0.0.0.0', 9502);
 
-$ws->on('Open', function($ws, $request) {
-    $ws->push($request->fd, "连接ws服务端成功\n");
+//监听WebSocket连接打开事件
+$ws->on('Open', function ($ws, $request) {
+    $ws->push($request->fd, "hello, welcome\n");
 });
 
-$ws->on('Message', function($ws, $frame) {
-    echo "消息：{$frame->data}\n";
+//监听WebSocket消息事件
+$ws->on('Message', function ($ws, $frame) {
+    echo "Message: {$frame->data}\n";
     $ws->push($frame->fd, "server: {$frame->data}");
 });
 
-$ws->on('Close', function($ws, $fd) {
+//监听WebSocket连接关闭事件
+$ws->on('Close', function ($ws, $fd) {
     echo "client-{$fd} is closed\n";
 });
 
