@@ -12,6 +12,7 @@
         var url = "ws://swoole.91haoxue.top:9502";
         var websocket = new WebSocket(url);
         websocket.onopen = function (evt) {
+            websocket.send('客户端连接上服务端');
             console.log("Connected to WebSocket server.");
         };
         websocket.onmessage = function (evt) {
