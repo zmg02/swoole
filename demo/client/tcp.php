@@ -1,6 +1,6 @@
 <?php
 
-$client = new Client(SWOOLE_SOCK_TCP);
+$client = new Swoole\Coroutine\Client(SWOOLE_SOCK_TCP);
 
 if (!$client->connect('127.0.0.1', 9501, 0.5)) exit('链接失败！');
 
