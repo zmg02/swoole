@@ -6,6 +6,7 @@
         'enable_static_handler' => true,
         'document_root' => '/www/wwwroot/swoole/swoole/public',
     ]);
+    
     $http->on('Request', function ($request, $response) {
         if ($request->server['path_info'] == '/favicon.ico' || $request->server['request_uri'] == '/favicon.ico') {
             $response->end();

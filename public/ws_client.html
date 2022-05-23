@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>ws客户端</h2>
+    <script>
+        var url = "ws://swoole.91haoxue.top:9502";
+        var websocket = new WebSocket(url);
+        websocket.onopen = function (evt) {
+            console.log("Connected to WebSocket server.");
+        };
+        websocket.onmessage = function (evt) {
+            console.log('Retrieved data from server: ' + evt.data);
+        };
+        websocket.onclose = function (evt) {
+            console.log('Disconnected');
+        };
+        websocket.onerror = function (evt, e) {
+            console.log('Error occured: ' + evt.data);
+        };
+    </script>
+</body>
+</html>
