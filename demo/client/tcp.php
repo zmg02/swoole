@@ -14,3 +14,4 @@ $client->send($msg);
 echo $client->recv();
 // 关闭客户端
 $client->close();
+
