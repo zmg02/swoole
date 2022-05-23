@@ -20,7 +20,8 @@
         $controllerName = $controller.'Controller';
         $controllerPath = $controllerName.'.php';
         include_once $controllerPath;
-        (new $controllerName)->$action($request, $response);
+        $result = (new $controllerName)->$action($request, $response);
+        $response->end('result: ' . $result . ' # ' . rand(1000,9999));
     });
 
     $http->start();
