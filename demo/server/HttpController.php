@@ -31,7 +31,12 @@ class HttpController
         }
         $response->header('Content-Type', 'text/html; charset=utf-8');
         $response->cookie('author', 'zmg', time()+60*60);
-
+        // todo 5s
+        $data = [
+            'task' => 1,
+            'data'   => 'zzz',
+        ];
+        $response->task($data);
         // list($controller, $action) = explode('/', trim($request->server['request_uri'], '/'));
         // //根据 $controller, $action 映射到不同的控制器类和方法
         // $controllerName = $controller.'Controller';
@@ -67,6 +72,7 @@ class HttpController
     public function onTask($http, $taskId, $reactorId, $data)
     {
         echo "New AsyncTask[id={$taskId}]".PHP_EOL;
+        sleep(5);
         //返回任务执行的结果
         $http->finish("{$data} -> OK");
     }
