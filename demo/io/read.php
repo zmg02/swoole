@@ -1,5 +1,7 @@
 <?php
 
-$r = Swoole\Coroutine\System::readFile(__DIR__ . '/data/php.txt' . $fileName);
-
-var_dump($r);
+$fileName = __DIR__ . '/data/php.txt';
+Swoole\Coroutine\run(function () use ($fileName) {
+    $r = Swoole\Coroutine\System::readFile($fileName);
+    var_dump($r);
+});
