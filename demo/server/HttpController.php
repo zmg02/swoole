@@ -37,11 +37,10 @@ class HttpController
         $response->header('Content-Type', 'text/html; charset=utf-8');
         $response->cookie('author', 'zmg', time()+60*60);
         $fileName = __DIR__ . '/data/http.log';
-        var_dump($fileName);
         $log = json_encode($request);
-        Swoole\Coroutine\run(function() use ($fileName,$log) {
+        // Swoole\Coroutine\run(function() use ($fileName,$log) { //Swoole事件中不能加run方法，加了会报错
             Swoole\Coroutine\System::writeFile($fileName, $log, FILE_APPEND);
-        });
+        // });
         // list($controller, $action) = explode('/', trim($request->server['request_uri'], '/'));
         // //根据 $controller, $action 映射到不同的控制器类和方法
         // $controllerName = $controller.'Controller';
