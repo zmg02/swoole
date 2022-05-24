@@ -37,6 +37,7 @@ class HttpController
         $response->header('Content-Type', 'text/html; charset=utf-8');
         $response->cookie('author', 'zmg', time()+60*60);
         $fileName = __DIR__ . '/data/http.log';
+        var_dump($fileName);
         $log = json_encode($request);
         Swoole\Coroutine\run(function() use ($fileName,$log) {
             Swoole\Coroutine\System::writeFile($fileName, $log, FILE_APPEND);
