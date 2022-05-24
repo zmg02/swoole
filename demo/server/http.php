@@ -22,9 +22,9 @@
             'header:'  => $request->header,
         ];
         $log = json_encode($log) . PHP_EOL;
-        Swoole\Coroutine\run(function() use ($fileName,$log) {
+        // Swoole\Coroutine\run(function() use ($fileName,$log) {
             Swoole\Coroutine\System::writeFile($fileName, $log, FILE_APPEND);
-        });
+        // });
         // $response->end('sss. #' . json_encode($request->get) . rand(1000,9999));
 
         // list($controller, $action) = explode('/', trim($request->server['request_uri'], '/'));
