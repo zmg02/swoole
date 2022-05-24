@@ -15,7 +15,13 @@
         $response->header('Content-Type', 'text/html; charset=utf-8');
         $response->cookie('address', 'xiamen', time()+60*10);
         $fileName = __DIR__ . '/data/http.log';
-        $log = json_encode($request);
+        $log = [
+            'data:' => date('Y-m-d H:i:s'),
+            'get:'  => $request->get,
+            'post:'  => $request->post,
+            'header:'  => $request->header,
+        ];
+        $log = json_encode($log) . PHP_EOL;
         Swoole\Coroutine\run(function() use ($fileName,$log) {
             Swoole\Coroutine\System::writeFile($fileName, $log, FILE_APPEND);
         });
