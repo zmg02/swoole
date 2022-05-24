@@ -13,7 +13,7 @@ if (is_file(DB_FILE)) {
 
 $server->setHandler('GET', function ($fd, $data) use ($server) {
     if (count($data) == 0) {
-        return $server->send($fd, Server::format(Server::ERROR, "ERR wrong number of arguments fro 'GET' command");)
+        return $server->send($fd, Server::format(Server::ERROR, "ERR wrong number of arguments fro 'GET' command"));
     }
     $key = $data[0];
     if (empty($server->data[$key])) {
