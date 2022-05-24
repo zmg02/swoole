@@ -14,17 +14,7 @@
         }
         $response->header('Content-Type', 'text/html; charset=utf-8');
         $response->cookie('address', 'xiamen', time()+60*10);
-        $fileName = __DIR__ . '/data/http.log';
-        $log = [
-            'data:' => date('Y-m-d H:i:s'),
-            'get:'  => $request->get,
-            'post:'  => $request->post,
-            'header:'  => $request->header,
-        ];
-        $log = json_encode($log) . PHP_EOL;
-        // Swoole\Coroutine\run(function() use ($fileName,$log) {
-            Swoole\Coroutine\System::writeFile($fileName, $log, FILE_APPEND);
-        // });
+        phpinfo();
         // $response->end('sss. #' . json_encode($request->get) . rand(1000,9999));
 
         // list($controller, $action) = explode('/', trim($request->server['request_uri'], '/'));
