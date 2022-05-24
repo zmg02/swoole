@@ -14,8 +14,7 @@
         }
         $response->header('Content-Type', 'text/html; charset=utf-8');
         $response->cookie('address', 'xiamen', time()+60*10);
-        echo phpinfo();
-        exit;
+
         // $response->end('sss. #' . json_encode($request->get) . rand(1000,9999));
 
         // list($controller, $action) = explode('/', trim($request->server['request_uri'], '/'));
@@ -24,7 +23,7 @@
         // $controllerPath = $controllerName.'.php';
         // include_once $controllerPath;
         // $result = (new $controllerName)->$action($request, $response);
-        $result = 'http server';
+        $result = phpinfo();
         $response->end('result: ' . $result . ' # ' . rand(1000,9999));
     });
 
