@@ -14,7 +14,8 @@
         }
         $response->header('Content-Type', 'text/html; charset=utf-8');
         $response->cookie('address', 'xiamen', time()+60*10);
-        phpinfo();
+        echo phpinfo();
+        exit;
         // $response->end('sss. #' . json_encode($request->get) . rand(1000,9999));
 
         // list($controller, $action) = explode('/', trim($request->server['request_uri'], '/'));
