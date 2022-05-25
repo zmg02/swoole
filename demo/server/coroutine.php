@@ -40,6 +40,7 @@ run(function() {
             $statement = $pdo->prepare('SELECT * FROM `user`');
             for ($n = 100; $n--;) {
                 $statement->execute();
+                echo count($statement->fetchAll());
                 assert(count($statement->fetchAll()) > 0);
             }
         });
