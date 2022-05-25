@@ -5,7 +5,7 @@
 // $statement->execute();
 // echo count($statement->fetchAll());
 $redis = new Redis();
-$redis->connect('101.33.235.45', 6379);
+$redis->connect('127.0.0.1', 6379);
 $redis->set('key', 'value');
 echo $redis->get('key');
 exit;
