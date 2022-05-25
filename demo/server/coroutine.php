@@ -11,6 +11,7 @@ $s = microtime(true);
 // Swoole\Coroutine\run()见'协程容器'章节
 run(function() {
     //i just want to sleep...
+    echo 'sleep'.PHP_EOL;
     for ($c = 100; $c--;) {
         Coroutine::create(function () {
             for ($n = 100; $n--;) {
@@ -19,6 +20,7 @@ run(function() {
         });
     }
     // 10k file read and write
+    echo 'io'.PHP_EOL;
     for ($c = 100; $c--;) {
         Coroutine::create(function () use ($c) {
             $tmp_filename = "/tmp/test-{$c}.php";
@@ -28,6 +30,18 @@ run(function() {
                 assert(file_get_contents($tmp_filename) === $self);
             }
             unlink($tmp_filename);
+        });
+    }
+    // 10k pdo and mysqli read
+    echo 'pdo'.PHP_EOL;
+    for ($c = 50; $c--;) {
+        Coroutine::create(function () {
+            $pdo = new PDO('mysql:host=127.0.0.1;dbname=test;charset=utf8', 'root', 'root');
+            $statement = $pdo->prepare('SELECT * FROM `user`');
+            for ($n = 100; $n--;) {
+                $statement->execute();
+                assert(count($statement->fetchAll()) > 0);
+            }
         });
     }
 });
