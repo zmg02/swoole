@@ -1,5 +1,11 @@
 <?php
 
+$pdo = new PDO('mysql:host=101.33.235.45;dbname=test_2022;charset=utf8', 'root', '91haoxue2022');
+$statement = $pdo->prepare('SELECT * FROM `user`');
+$statement->execute();
+echo count($statement->fetchAll());
+exit;
+
 use Swoole\Runtime;
 use Swoole\Coroutine;
 use function Swoole\Coroutine\run;
