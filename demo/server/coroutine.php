@@ -36,7 +36,7 @@ run(function() {
     echo 'pdo'.PHP_EOL;
     for ($c = 50; $c--;) {
         Coroutine::create(function () {
-            $pdo = new PDO('mysql:host=127.0.0.1;dbname=test;charset=utf8', 'root', 'root');
+            $pdo = new PDO('mysql:host=101.33.235.45;dbname=test_2022;charset=utf8', 'root', '91haoxue2022');
             $statement = $pdo->prepare('SELECT * FROM `user`');
             for ($n = 100; $n--;) {
                 $statement->execute();
